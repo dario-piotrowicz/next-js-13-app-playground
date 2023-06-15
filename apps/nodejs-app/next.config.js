@@ -4,6 +4,7 @@ const nextConfig = {
   experimental: {
     appDir: true,
   },
+  transpilePackages: ["nextjs-app-shared"]
 };
 
 module.exports = nextConfig;

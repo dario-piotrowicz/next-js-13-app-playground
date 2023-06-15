@@ -7,6 +7,5 @@ export default {
     '../../packages/nextjs-app-shared/ui/**/*.{js,ts,jsx,tsx,mdx}',
     './app/**/*.{js,ts,jsx,tsx,mdx}',
     './pages/**/*.{js,ts,jsx,tsx,mdx}',
-    './ui/**/*.{js,ts,jsx,tsx,mdx}',
   ]
 } as Config;

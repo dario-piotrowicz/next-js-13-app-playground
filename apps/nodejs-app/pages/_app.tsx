@@ -1,7 +1,7 @@
 import { Layout } from '#/ui/page-directory/layout';
 import { Inter } from 'next/font/google';
 import { AppProps } from 'next/app';
-import 'styles/globals.css';
+import 'nextjs-app-shared/ui/globals.css';
 
 // Using next/font instead of a manual setup, we get:
 // - significantly easier setup

@@ -1,7 +1,7 @@
-import '#/styles/globals.css';
-import { AddressBar } from '#/ui/address-bar';
-import Byline from '#/ui/byline';
-import { GlobalNav } from '#/ui/global-nav';
+import 'nextjs-app-shared/ui/globals.css'
+import { AddressBar } from 'nextjs-app-shared/ui/address-bar';
+import Byline from 'nextjs-app-shared/ui/byline';
+import { GlobalNav } from 'nextjs-app-shared/ui/global-nav';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
