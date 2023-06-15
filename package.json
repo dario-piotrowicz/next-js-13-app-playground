@@ -6,7 +6,8 @@
 	],
 	"scripts": {
         "build": "turbo build",
-        "pages:build": "turbo pages:build"
+        "pages:build": "turbo pages:build",
+        "deploy:worker": "npm --prefix apps/gateway-worker run deploy"
 	},
 	"devDependencies": {
 		"turbo": "^1.10.2"

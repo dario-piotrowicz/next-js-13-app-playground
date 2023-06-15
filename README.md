@@ -23,3 +23,10 @@ Integrated the new next-on-pages app with Pages so that it also deploys on push.
 
 ![Pages build Settings](./images/pages-build-settings.png)
 
+### Created gateway worker
+
+Using
+```sh
+npm create cloudflare
+```
+I've created a new gateway worker in `apps/`
