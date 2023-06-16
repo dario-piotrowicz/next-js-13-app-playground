@@ -3,20 +3,21 @@
 import { demos, type Item } from '../lib/demos';
 import { NextLogo } from './next-logo';
 import Link from 'next/link';
-import { useSelectedLayoutSegment } from 'next/navigation';
+import { useRouter, useSelectedLayoutSegment } from 'next/navigation';
 import { MenuAlt2Icon, XIcon } from '@heroicons/react/solid';
 import clsx from 'clsx';
 import React, { useState } from 'react';
 import Byline from './byline';
 
 export function GlobalNav() {
+  const router = useRouter();
   const [isOpen, setIsOpen] = useState(false);
-  const close = () => {
-    debugger;
-    try {
-      setIsOpen(false);
-    } catch (e) { debugger; }
-  }
+  const navigateTo = (href: string, linkClickEvent?: React.MouseEvent) => {
+    console.log('navigateTo ' + href);
+    linkClickEvent?.preventDefault();
+    setIsOpen(false);
+    setTimeout(() => router.push(href));
+  };
 
   return (
     <div className="fixed top-0 z-10 flex w-full flex-col border-b border-gray-800 bg-black lg:bottom-0 lg:z-auto lg:w-72 lg:border-b-0 lg:border-r lg:border-gray-800">
@@ -24,7 +25,8 @@ export function GlobalNav() {
         <Link
           href="/"
           className="group flex w-full items-center gap-x-2.5"
-          onClick={close}
+          onClickCapture={event => navigateTo('/', event)}
+          prefetch={false}
         >
           <div className="h-7 w-7 rounded-full border border-white/30 group-hover:border-white/50">
             <NextLogo />
@@ -66,7 +68,7 @@ export function GlobalNav() {
 
                 <div className="space-y-1">
                   {section.items.map((item) => (
-                    <GlobalNavItem key={item.slug} item={item} close={close} />
+                    <GlobalNavItem key={item.slug} item={item} navigateTo={navigateTo} />
                   ))}
                 </div>
               </div>
@@ -81,17 +83,18 @@ export function GlobalNav() {
 
 function GlobalNavItem({
   item,
-  close,
+  navigateTo,
 }: {
   item: Item;
-  close: () => false | void;
+  navigateTo: (href: string, linkClickEvent?: React.MouseEvent) => void;
 }) {
   const segment = useSelectedLayoutSegment();
   const isActive = item.slug === segment;
 
   return (
     <Link
-      onClick={close}
+      onClickCapture={event => navigateTo(`/${item.slug}`, event)}
+      prefetch={false}
       href={`/${item.slug}`}
       className={clsx(
         'block rounded-md px-3 py-2 text-sm font-medium hover:text-gray-300',
